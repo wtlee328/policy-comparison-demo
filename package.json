@@ -1,0 +1,25 @@
+{
+    "name": "policy-comparison-demo",
+    "version": "1.0.0",
+    "private": true,
+    "workspaces": [
+        "client",
+        "server"
+    ],
+    "dependencies": {
+        "express": "^5.2.1",
+        "cors": "^2.8.6",
+        "dotenv": "^17.2.3",
+        "openai": "^6.16.0"
+    },
+    "devDependencies": {
+        "@types/express": "^5.0.6",
+        "@types/cors": "^2.8.19",
+        "@types/node": "^25.0.10",
+        "typescript": "^5.9.3"
+    },
+    "scripts": {
+        "build": "cd client && npm install && npm run build",
+        "install-all": "npm install && cd client && npm install && cd ../server && npm install"
+    }
+}

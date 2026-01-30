@@ -5,7 +5,7 @@ import path from 'path';
 import fs from 'fs';
 import { OpenAI } from 'openai';
 
-dotenv.config({ path: '/Users/wtlee/Documents/GitHub/Satori/.env' });
+dotenv.config();
 
 const app = express();
 app.use(cors());
@@ -16,7 +16,7 @@ const openai = new OpenAI({
 });
 
 const PORT = 3001;
-const MOCK_DATA_DIR = '/Users/wtlee/Documents/GitHub/Satori/docs/mock_specimen_data';
+const MOCK_DATA_DIR = path.join(__dirname, '../data/mock_specimen_data');
 const EMBEDDINGS_FILE = path.join(__dirname, '../data/standard_embeddings.json');
 
 // --- Pre-loaded Data ---
@@ -326,6 +326,10 @@ Focus on: ${detectedType} specific nuances.
     }
 });
 
-app.listen(PORT, () => {
-    console.log(`Server running at http://localhost:${PORT}`);
-});
+export default app;
+
+if (require.main === module) {
+    app.listen(PORT, () => {
+        console.log(`Server running at http://localhost:${PORT}`);
+    });
+}
