@@ -16,8 +16,8 @@ const openai = new OpenAI({
 });
 
 const PORT = 3001;
-const MOCK_DATA_DIR = path.join(__dirname, '../data/mock_specimen_data');
-const EMBEDDINGS_FILE = path.join(__dirname, '../data/standard_embeddings.json');
+const MOCK_DATA_DIR = path.join(process.cwd(), 'server/data/mock_specimen_data');
+const EMBEDDINGS_FILE = path.join(process.cwd(), 'server/data/standard_embeddings.json');
 
 // --- Pre-loaded Data ---
 
@@ -254,7 +254,7 @@ Similarity: ${pair.score.toFixed(2)}
 `).join('\n\n');
 
         const response = await openai.chat.completions.create({
-            model: "gpt-5-mini",
+            model: "gpt-4o-mini",
             messages: [
                 {
                     role: "system",
